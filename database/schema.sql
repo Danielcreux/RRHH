@@ -307,3 +307,5 @@ CREATE TABLE IF NOT EXISTS talentia_candidatos (
     FOREIGN KEY (empleado_id) REFERENCES employees(id)
     ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+

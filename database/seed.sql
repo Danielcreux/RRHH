@@ -53,3 +53,95 @@ VALUES
 (2,'2026-02-03','2026-02-03 09:01:00','2026-02-03 17:05:00',484,'tardanza','127.0.0.1'),
 (2,'2026-02-04','2026-02-04 09:00:00','2026-02-04 17:00:00',480,'a_tiempo','127.0.0.1'),
 (3,'2026-02-03','2026-02-03 08:59:00','2026-02-03 17:02:00',483,'a_tiempo','127.0.0.1');
+
+-- Asistencias para empleados 2-10 durante febrero 2026
+INSERT INTO attendance (employee_id, fecha, hora_entrada, hora_salida, minutos_trabajados, estado, origen_ip) VALUES
+-- Empleado 2 (Lucía García)
+(2, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.10'),
+(2, '2026-02-02', '2026-02-02 08:55:00', '2026-02-02 17:05:00', 490, 'a_tiempo', '192.168.1.10'),
+(2, '2026-02-03', '2026-02-03 09:10:00', '2026-02-03 17:00:00', 470, 'tardanza', '192.168.1.10'),
+(2, '2026-02-04', '2026-02-04 09:00:00', '2026-02-04 17:00:00', 480, 'a_tiempo', '192.168.1.10'),
+(2, '2026-02-05', '2026-02-05 09:00:00', '2026-02-05 17:00:00', 480, 'a_tiempo', '192.168.1.10'),
+(2, '2026-02-06', '2026-02-06 09:00:00', '2026-02-06 17:00:00', 480, 'a_tiempo', '192.168.1.10'),
+(2, '2026-02-07', NULL, NULL, 0, 'ausente', NULL),
+(2, '2026-02-08', '2026-02-08 09:00:00', '2026-02-08 17:00:00', 480, 'a_tiempo', '192.168.1.10'),
+-- Empleado 3 (Carlos Martín)
+(3, '2026-02-01', '2026-02-01 08:59:00', '2026-02-01 17:02:00', 483, 'a_tiempo', '192.168.1.11'),
+(3, '2026-02-02', '2026-02-02 09:00:00', '2026-02-02 17:00:00', 480, 'a_tiempo', '192.168.1.11'),
+(3, '2026-02-03', '2026-02-03 09:15:00', '2026-02-03 17:00:00', 465, 'tardanza', '192.168.1.11'),
+(3, '2026-02-04', '2026-02-04 09:00:00', '2026-02-04 17:00:00', 480, 'a_tiempo', '192.168.1.11'),
+(3, '2026-02-05', '2026-02-05 09:00:00', '2026-02-05 17:00:00', 480, 'a_tiempo', '192.168.1.11'),
+(3, '2026-02-06', '2026-02-06 09:00:00', '2026-02-06 17:00:00', 480, 'a_tiempo', '192.168.1.11'),
+(3, '2026-02-07', NULL, NULL, 0, 'justificado', NULL),
+-- Empleado 4 (Elena Santos)
+(4, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.12'),
+(4, '2026-02-02', '2026-02-02 09:00:00', '2026-02-02 17:00:00', 480, 'a_tiempo', '192.168.1.12'),
+(4, '2026-02-03', '2026-02-03 08:50:00', '2026-02-03 17:10:00', 500, 'a_tiempo', '192.168.1.12'),
+(4, '2026-02-04', '2026-02-04 09:05:00', '2026-02-04 17:00:00', 475, 'tardanza', '192.168.1.12'),
+(4, '2026-02-05', '2026-02-05 09:00:00', '2026-02-05 17:00:00', 480, 'a_tiempo', '192.168.1.12'),
+-- Empleado 5 (Diego Navarro)
+(5, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.13'),
+(5, '2026-02-02', '2026-02-02 09:00:00', '2026-02-02 17:00:00', 480, 'a_tiempo', '192.168.1.13'),
+(5, '2026-02-03', '2026-02-03 09:00:00', '2026-02-03 17:00:00', 480, 'a_tiempo', '192.168.1.13'),
+(5, '2026-02-04', '2026-02-04 09:00:00', '2026-02-04 17:00:00', 480, 'a_tiempo', '192.168.1.13'),
+(5, '2026-02-05', '2026-02-05 09:00:00', '2026-02-05 17:00:00', 480, 'a_tiempo', '192.168.1.13'),
+-- Empleado 6 (Marta Vega)
+(6, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.14'),
+(6, '2026-02-02', '2026-02-02 09:00:00', '2026-02-02 17:00:00', 480, 'a_tiempo', '192.168.1.14'),
+(6, '2026-02-03', '2026-02-03 09:20:00', '2026-02-03 17:00:00', 460, 'tardanza', '192.168.1.14'),
+(6, '2026-02-04', '2026-02-04 09:00:00', '2026-02-04 17:00:00', 480, 'a_tiempo', '192.168.1.14'),
+-- Empleado 7 (Sergio Ibáñez)
+(7, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.15'),
+(7, '2026-02-02', '2026-02-02 09:00:00', '2026-02-02 17:00:00', 480, 'a_tiempo', '192.168.1.15'),
+(7, '2026-02-03', '2026-02-03 09:00:00', '2026-02-03 17:00:00', 480, 'a_tiempo', '192.168.1.15'),
+-- Empleado 8 (Paula Ortega)
+(8, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.16'),
+(8, '2026-02-02', '2026-02-02 09:00:00', '2026-02-02 17:00:00', 480, 'a_tiempo', '192.168.1.16'),
+-- Empleado 9 (Iván Rojas)
+(9, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.17'),
+-- Empleado 10 (Nuria Campos)
+(10, '2026-02-01', '2026-02-01 09:00:00', '2026-02-01 17:00:00', 480, 'a_tiempo', '192.168.1.18');
+
+-- Nóminas para empleados 2-10 en enero y febrero 2026
+INSERT INTO payroll (employee_id, periodo_mes, periodo_anio, salario_base, bonos, deducciones, total, estado, generado_por_user_id) VALUES
+-- Enero 2026 (completar)
+(2, 1, 2026, 2200, 150, 80, 2270, 'approved', 1),
+(3, 1, 2026, 3000, 200, 120, 3080, 'paid', 1),
+(4, 1, 2026, 2800, 0, 100, 2700, 'approved', 1),
+(5, 1, 2026, 1900, 50, 30, 1920, 'approved', 1),
+(6, 1, 2026, 2400, 100, 60, 2440, 'draft', 1),
+(7, 1, 2026, 2100, 80, 40, 2140, 'approved', 1),
+(8, 1, 2026, 3500, 200, 150, 3550, 'paid', 1),
+(9, 1, 2026, 1850, 20, 10, 1860, 'approved', 1),
+(10,1, 2026, 2300, 120, 70, 2350, 'draft', 1),
+
+-- Febrero 2026
+(2, 2, 2026, 2200, 150, 80, 2270, 'draft', 1),
+(3, 2, 2026, 3000, 200, 120, 3080, 'draft', 1),
+(4, 2, 2026, 2800, 100, 100, 2800, 'draft', 1),
+(5, 2, 2026, 1900, 50, 30, 1920, 'draft', 1),
+(6, 2, 2026, 2400, 100, 60, 2440, 'draft', 1),
+(7, 2, 2026, 2100, 80, 40, 2140, 'draft', 1),
+(8, 2, 2026, 3500, 200, 150, 3550, 'draft', 1),
+(9, 2, 2026, 1850, 20, 10, 1860, 'draft', 1),
+(10,2, 2026, 2300, 120, 70, 2350, 'draft', 1);
+
+-- Solicitudes adicionales
+INSERT INTO leave_requests (employee_id, tipo, fecha_inicio, fecha_fin, motivo, estado, aprobado_por_user_id, comentario_aprobacion, resuelto_en) VALUES
+(4, 'vacaciones', '2026-02-20', '2026-02-25', 'Viaje familiar', 'approved', 1, 'Aprobado', NOW()),
+(5, 'permiso', '2026-02-15', '2026-02-15', 'Cita médica', 'approved', 1, 'OK', NOW()),
+(6, 'dia_personal', '2026-02-10', '2026-02-10', 'Asuntos personales', 'rejected', 1, 'No procede', NOW()),
+(7, 'vacaciones', '2026-03-01', '2026-03-05', 'Descanso', 'pending', NULL, NULL, NULL),
+(8, 'permiso', '2026-02-18', '2026-02-18', 'Trámites', 'pending', NULL, NULL, NULL),
+(9, 'vacaciones', '2026-02-22', '2026-02-24', 'Asuntos familiares', 'approved', 1, 'Concedido', NOW()),
+(10,'dia_personal', '2026-02-14', '2026-02-14', 'Día personal', 'pending', NULL, NULL, NULL);
+
+-- Candidatos de ejemplo (con campos opcionales)
+INSERT INTO talentia_candidatos (nombre, email, telefono, edad, experiencia_anios, skills, idiomas, nivel_ingles, puesto_actual, archivo_pdf, cv_text, estado, creado_por_user_id) VALUES
+('Ana Belén Martín', 'ana.martin@email.com', '600111222', 32, 8, 'PHP, JavaScript, MySQL, Laravel, Vue', 'Inglés, Francés', 'B2', 'Desarrolladora Full Stack', NULL, 'Experiencia en desarrollo web...', 'nuevo', 1),
+('Carlos López', 'carlos.lopez@email.com', '600222333', 28, 5, 'Python, Django, PostgreSQL, Docker', 'Inglés', 'C1', 'Backend Developer', NULL, 'Desarrollador backend con experiencia en microservicios...', 'en_revision', 1),
+('Elena Ruiz', 'elena.ruiz@email.com', '600333444', 35, 12, 'Project Management, Agile, Scrum, Jira', 'Inglés, Alemán', 'C1', 'Project Manager', NULL, 'Gestión de proyectos tecnológicos...', 'preseleccionado', 1),
+('David Gómez', 'david.gomez@email.com', '600444555', 41, 15, 'Java, Spring, Hibernate, Oracle', 'Inglés', 'B2', 'Arquitecto de Software', NULL, 'Arquitecto con más de 15 años de experiencia...', 'contratado', 1),
+('Laura Sánchez', 'laura.sanchez@email.com', '600555666', 26, 3, 'React, Node.js, MongoDB', 'Inglés', 'B1', 'Desarrolladora Frontend', NULL, 'Desarrolladora frontend con experiencia en React...', 'descartado', 1),
+('Mario Jiménez', 'mario.jimenez@email.com', '600666777', 38, 10, 'DevOps, AWS, Kubernetes, Terraform', 'Inglés', 'C2', 'DevOps Engineer', NULL, 'Ingeniero DevOps certificado AWS...', 'nuevo', 1),
+('Patricia Díaz', 'patricia.diaz@email.com', '600777888', 30, 6, 'Marketing Digital, SEO, SEM, Analytics', 'Inglés', 'B2', 'Especialista Marketing', NULL, 'Experta en marketing digital y análisis de datos...', 'en_revision', 1);

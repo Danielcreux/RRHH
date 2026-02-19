@@ -19,7 +19,7 @@ abstract class Controller {
     $data['_base_url'] = $this->cfg['base_url'] ?? '';
     $data['_user'] = Auth::user();
 
-    extract($data, EXTR_SKIP);
+    extract($data, EXTR_OVERWRITE);
 
     require __DIR__ . '/../views/layout/header.php';
     require __DIR__ . '/../views/layout/sidebar.php';
@@ -38,7 +38,7 @@ abstract class Controller {
     $data['_app_name'] = $this->cfg['app_name'] ?? 'App';
     $data['_base_url'] = $this->cfg['base_url'] ?? '';
     $data['_user'] = Auth::user();
-    extract($data, EXTR_SKIP);
+    extract($data, EXTR_OVERWRITE);
     require $viewFile;
   }
 

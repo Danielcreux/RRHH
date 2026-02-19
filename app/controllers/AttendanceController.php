@@ -41,12 +41,18 @@ class AttendanceController extends Controller {
     $this->json(['ok'=>false,'error'=>'Ya existe entrada y salida para hoy'], 409);
   }
 
-  public function daily(): void {
+ public function daily(): void {
     RoleMiddleware::require(['super_admin','rrhh']);
 
-    $fecha = $_GET['fecha'] ?? (new DateTime())->format('Y-m-d');
-    if (!Validator::date($fecha)) $fecha = (new DateTime())->format('Y-m-d');
-
+    $fecha = $_GET['fecha'] ?? '';
+    if (!Validator::date($fecha)) {
+        // Obtener la fecha más reciente de attendance
+        $st = $this->pdo->query("SELECT MAX(fecha) FROM attendance");
+        $fecha = $st->fetchColumn();
+        if (!$fecha) {
+            $fecha = (new DateTime())->format('Y-m-d'); // fallback a hoy
+        }
+    }
     $filters = [
       'employee_id' => (int)($_GET['employee_id'] ?? 0),
       'department_id' => (int)($_GET['department_id'] ?? 0),
@@ -56,6 +62,13 @@ class AttendanceController extends Controller {
 
     $deps = (new Department())->allActive();
     $rows = (new Attendance())->getDayBoard($fecha, $filters);
+    
+    error_log("=== ASISTENCIA DIARIA ===");
+error_log("Fecha consultada: $fecha");
+error_log("Número de registros: " . count($rows));
+foreach ($rows as $r) {
+    error_log("ID: {$r['id']} - Empleado: {$r['apellidos']} - Entrada: {$r['hora_entrada']} - Salida: {$r['hora_salida']}");
+}
 
     $this->view('attendance/daily', [
       'fecha'=>$fecha,

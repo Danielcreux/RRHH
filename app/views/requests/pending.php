@@ -1,3 +1,34 @@
+<?php if (empty($rows)): ?>
+    <p>No hay solicitudes pendientes.</p>
+<?php else: ?>
+    <input type="hidden" id="csrf" value="<?= htmlspecialchars($csrf) ?>">
+    <table>
+        <thead>
+            <tr>
+                <th>Empleado</th>
+                <th>Tipo</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($rows as $r): ?>
+            <tr data-id="<?= $r['id'] ?>">
+                <td><?= htmlspecialchars($r['apellidos'] . ', ' . $r['nombre']) ?></td>
+                <td><?= htmlspecialchars($r['tipo']) ?></td>
+                <td><?= htmlspecialchars($r['fecha_inicio']) ?></td>
+                <td><?= htmlspecialchars($r['fecha_fin']) ?></td>
+                <td>
+                    <button class="btn btn-success" data-action="approve">Aprobar</button>
+                    <button class="btn btn-danger" data-action="reject">Rechazar</button>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>
+
 <script>
 document.addEventListener('click', async (e) => {
   const btn = e.target.closest('button[data-action]');
@@ -11,7 +42,7 @@ document.addEventListener('click', async (e) => {
 
   const accion = btn.dataset.action; // approve | reject
   const csrf = document.getElementById('csrf')?.value || '';
-  const comentario = (prompt('Comentario (opcional):') ?? '').trim();
+  const comentario = ''; // Sin comentario
 
   const payload = { csrf, id, accion, comentario };
 

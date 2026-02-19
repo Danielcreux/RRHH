@@ -47,6 +47,14 @@ class RequestsController extends Controller {
   public function pending(): void {
     RoleMiddleware::require(['super_admin','rrhh']);
     $rows = (new LeaveRequest())->listPending();
+    
+     // LOGS DE DEPURACIÓN
+    error_log("=== SOLICITUDES PENDIENTES ===");
+    error_log("Número de filas: " . count($rows));
+    foreach ($rows as $r) {
+        error_log("ID: {$r['id']} - Empleado: {$r['nombre']} {$r['apellidos']} - Fechas: {$r['fecha_inicio']} a {$r['fecha_fin']}");
+    }
+    
     $this->view('requests/pending', ['rows'=>$rows,'csrf'=>Csrf::token()]);
   }
 

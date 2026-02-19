@@ -9,17 +9,19 @@ final class TalentiaCandidato extends Model {
   }
 
   public function find(int $id): ?array {
-    $st = $this->pdo->prepare("SELECT * FROM talentia_candidatos WHERE id = :id LIMIT 1");
-    $st->execute(['id' => $id]);
+    $st = $this->pdo->prepare("SELECT * FROM talentia_candidatos WHERE id=:id LIMIT 1");
+    $st->execute(['id'=>$id]);
     $r = $st->fetch();
     return $r ?: null;
   }
 
   public function create(array $d): int {
     $sql = "INSERT INTO talentia_candidatos
-      (nombre,email,telefono,edad,experiencia_anios,skills,idiomas,nivel_ingles,puesto_actual,archivo_pdf,cv_text,fecha_registro,creado_por_user_id)
+      (nombre,email,telefono,edad,experiencia_anios,skills,idiomas,nivel_ingles,puesto_actual,
+       archivo_pdf,cv_text,estado,empleado_id,fecha_registro,creado_por_user_id)
       VALUES
-      (:nombre,:email,:telefono,:edad,:exp,:skills,:idiomas,:nivel,:puesto,:pdf,:cv_text,NOW(),:creado_por)";
+      (:nombre,:email,:telefono,:edad,:exp,:skills,:idiomas,:nivel,:puesto,
+       :pdf,:cv_text,:estado,:empleado_id,NOW(),:creado_por_user_id)";
 
     $this->pdo->prepare($sql)->execute([
       'nombre' => $d['nombre'],
@@ -33,18 +35,25 @@ final class TalentiaCandidato extends Model {
       'puesto' => $d['puesto_actual'] ?? null,
       'pdf' => $d['archivo_pdf'] ?? null,
       'cv_text' => $d['cv_text'] ?? null,
-      'creado_por' => $d['creado_por_user_id'] ?? null,
+      'estado' => $d['estado'] ?? 'nuevo',
+      'empleado_id' => $d['empleado_id'] ?? null,
+      'creado_por_user_id' => $d['creado_por_user_id'] ?? null,
     ]);
 
     return (int)$this->pdo->lastInsertId();
   }
 
+  public function updateEstado(int $id, string $estado): void {
+    $st = $this->pdo->prepare("UPDATE talentia_candidatos SET estado=:e WHERE id=:id");
+    $st->execute(['e'=>$estado,'id'=>$id]);
+  }
+
   public function delete(int $id): void {
-    $this->pdo->prepare("DELETE FROM talentia_candidatos WHERE id = :id")->execute(['id'=>$id]);
+    $this->pdo->prepare("DELETE FROM talentia_candidatos WHERE id=:id")->execute(['id'=>$id]);
   }
 
   /**
-   * Para reutilizar tu prompt: devuelve JSON con estructura parecida a tu cv_storage.json
+   * Para el prompt (equivalente a tu cv_storage.json).
    */
   public function allAsJson(): string {
     $sql = "SELECT nombre, edad, experiencia_anios, skills, idiomas, nivel_ingles, puesto_actual

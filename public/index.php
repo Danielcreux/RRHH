@@ -13,6 +13,7 @@ session_set_cookie_params([
   'samesite' => $cfg['session_samesite'] ?? 'Lax',
 ]);
 session_start();
+header('Content-Type: text/html; charset=utf-8');
 
 require_once __DIR__ . '/../app/core/Database.php';
 require_once __DIR__ . '/../app/core/Response.php';
@@ -23,6 +24,9 @@ require_once __DIR__ . '/../app/core/Model.php';
 require_once __DIR__ . '/../app/core/Controller.php';
 require_once __DIR__ . '/../app/core/Router.php';
 require_once __DIR__ . '/../app/middleware/RoleMiddleware.php';
+
+$autoload = __DIR__ . '/../vendor/autoload.php';
+if (is_file($autoload)) require_once $autoload;
 
 spl_autoload_register(function(string $class){
   $paths = [
